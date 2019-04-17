@@ -13,6 +13,12 @@ namespace app.Gameplay {
         [SerializeField]
         private float _YPush = 2f;
 
+        [Header("Other settings")]
+        [SerializeField]
+        private float _randomFactor = .2f;
+        [SerializeField]
+        private float _randomFactorAfterHittingPaddle = 3f;
+
         private Paddle _paddle;
         private GameStateController _gameStateController;
         private Rigidbody2D _ballRigidbody = null;
@@ -43,6 +49,34 @@ namespace app.Gameplay {
             if (!_gameStateController.IsGameOn) {
                 _ballRigidbody.velocity = new Vector2(_XPush, _YPush);
                 _gameStateController.IsGameOn = true;
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision) {
+            if (collision.gameObject.tag == "Paddle") {
+                TweakMovementAfterCollisionWithPaddle();
+            } else {
+                RandomizeMovementAfterCollision();
+            }
+
+        }
+
+        private void TweakMovementAfterCollisionWithPaddle() {
+            float xTweak = -_randomFactorAfterHittingPaddle*(_paddle.transform.position.x - transform.position.x);
+
+            Vector2 velocityTweak = new Vector2(xTweak, 0f);
+
+            if (_gameStateController.IsGameOn) {
+                _ballRigidbody.velocity += velocityTweak;
+            }
+        }
+
+        private void RandomizeMovementAfterCollision() {
+            Vector2 velocityTweak = new Vector2
+                (Random.Range(-_randomFactor, _randomFactor),
+                (Random.Range(-_randomFactor, _randomFactor)));
+            if (_gameStateController.IsGameOn) {
+                _ballRigidbody.velocity += velocityTweak;
             }
         }
     }
