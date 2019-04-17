@@ -4,6 +4,11 @@ using UnityEngine;
 using app.Controllers;
 
 namespace app.Gameplay {
+    /// <summary>
+    /// Movement of the ball,
+    /// Launching the ball,
+    /// Behaviour on collision
+    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class Ball : MonoBehaviour {
 
@@ -39,12 +44,18 @@ namespace app.Gameplay {
                 StickBallToPaddle();
         }
 
+        /// <summary>
+        /// Set the ball position to be close to the paddle
+        /// </summary>
         private void StickBallToPaddle() {
             Vector2 paddlePos = _paddle.transform.position;
             transform.position = paddlePos + _paddleToBallVector;
         }
 
-        // called by Paddle class
+        /// <summary>
+        /// Launches the ball,
+        /// Called by Paddle class
+        /// </summary>
         public void LaunchTheBall() {
             if (!_gameStateController.IsGameOn) {
                 _ballRigidbody.velocity = new Vector2(_XPush, _YPush);
@@ -61,6 +72,10 @@ namespace app.Gameplay {
 
         }
 
+        /// <summary>
+        /// After collision with paddle hit the ball to the direction 
+        /// that depends on where the ball hit
+        /// </summary>
         private void TweakMovementAfterCollisionWithPaddle() {
             float xTweak = -_randomFactorAfterHittingPaddle*(_paddle.transform.position.x - transform.position.x);
 
@@ -71,6 +86,9 @@ namespace app.Gameplay {
             }
         }
 
+        /// <summary>
+        /// Prevents the ball from making boring loops
+        /// </summary>
         private void RandomizeMovementAfterCollision() {
             Vector2 velocityTweak = new Vector2
                 (Random.Range(-_randomFactor, _randomFactor),

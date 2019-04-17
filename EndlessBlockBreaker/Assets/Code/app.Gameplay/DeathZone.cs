@@ -4,6 +4,10 @@ using UnityEngine;
 using app.Controllers;
 
 namespace app.Gameplay {
+    /// <summary>
+    /// Game over when ball falls down,
+    /// Crush threats
+    /// </summary>
     public class DeathZone : MonoBehaviour {
 
         private GameStateController _gameStateControleller;

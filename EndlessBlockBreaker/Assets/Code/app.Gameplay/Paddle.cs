@@ -5,6 +5,9 @@ using UnityEngine;
 
 
 namespace app.Gameplay {
+    /// <summary>
+    /// Paddle movement
+    /// </summary>
     public class Paddle : MonoBehaviour {
 
         [SerializeField]
@@ -25,10 +28,14 @@ namespace app.Gameplay {
 
         private void Update() {
             if (Input.touchCount > 0)
-                MovePaddleWithTouch();
+                PaddlePhases();
         }
 
-        private void MovePaddleWithTouch() {
+        /// <summary>
+        /// Moves paddle with user's touch,
+        /// Launches the ball when user ends touching
+        /// </summary>
+        private void PaddlePhases() {
             Touch userTouch = Input.GetTouch(0);
             _touchXPosition = _mainCamera.ScreenToWorldPoint(userTouch.position).x;
             if (userTouch.phase == TouchPhase.Began) {
@@ -42,10 +49,16 @@ namespace app.Gameplay {
             }
         }
 
+        /// <summary>
+        /// Calculates distance from user's touch to the paddle
+        /// </summary>
         private void CalculateDistanceFromFingerToPaddle() {
             _distanceFromFingerToPaddle = _touchXPosition - transform.position.x;
         }
 
+        /// <summary>
+        /// Move the paddle
+        /// </summary>
         private void Move() {
             float xPos = Mathf.Clamp(((_touchXPosition - _distanceFromFingerToPaddle) * _playerSpeed),
                 (-1 * _clampValue),
