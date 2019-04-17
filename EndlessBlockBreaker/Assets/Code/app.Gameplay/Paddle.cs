@@ -13,11 +13,13 @@ namespace app.Gameplay {
         private float _clampValue = .3f;
 
         private Camera _mainCamera;
+        private Ball _ball;
 
         private float _distanceFromFingerToPaddle = 0;
         private float _touchXPosition = 0;
 
         private void Start() {
+            _ball = FindObjectOfType<Ball>();
             _mainCamera = Camera.main;
         }
 
@@ -34,6 +36,9 @@ namespace app.Gameplay {
             }
             else if (userTouch.phase == TouchPhase.Moved) {
                 Move();
+            }
+            else if (userTouch.phase == TouchPhase.Ended) {
+                _ball.LaunchTheBall();
             }
         }
 
