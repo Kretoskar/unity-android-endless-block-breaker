@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using app.Controllers;
 
 namespace app.Gameplay.Threats {
     /// <summary>
@@ -12,11 +13,13 @@ namespace app.Gameplay.Threats {
         [SerializeField]
         protected int _speed;
 
+        protected ScoreController _scoreController = null;
+
         /// <summary>
         /// Add player score after death
         /// </summary>
         protected void AddScore() {
-            print(_score);
+            _scoreController.UpdateScore(_score);
         }
 
         /// <summary>

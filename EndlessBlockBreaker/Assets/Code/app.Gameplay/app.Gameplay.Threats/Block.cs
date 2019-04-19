@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using app.Controllers;
 
 namespace app.Gameplay.Threats {
     /// <summary>
@@ -12,6 +13,7 @@ namespace app.Gameplay.Threats {
         private Rigidbody2D _blockRigidbody;
 
         private void Start() {
+            _scoreController = FindObjectOfType<ScoreController>();
             _blockRigidbody = GetComponent<Rigidbody2D>();
             Move();
         }
