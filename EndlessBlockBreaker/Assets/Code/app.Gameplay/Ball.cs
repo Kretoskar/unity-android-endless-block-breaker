@@ -18,11 +18,15 @@ namespace app.Gameplay {
         [SerializeField]
         private float _YPush = 2f;
 
-        [Header("Other settings")]
+        [Header("Randomizing movement")]
         [SerializeField]
         private float _randomFactor = .2f;
         [SerializeField]
         private float _randomFactorAfterHittingPaddle = 3f;
+
+        [Header("Other settings")]
+        [SerializeField]
+        private float _ballSpeed = 3f;
 
         private Paddle _paddle;
         private GameStateController _gameStateController;
@@ -42,14 +46,8 @@ namespace app.Gameplay {
         private void Update() {
             if (!_gameStateController.IsGameOn)
                 StickBallToPaddle();
-        }
-
-        /// <summary>
-        /// Set the ball position to be close to the paddle
-        /// </summary>
-        private void StickBallToPaddle() {
-            Vector2 paddlePos = _paddle.transform.position;
-            transform.position = paddlePos + _paddleToBallVector;
+            else
+                KeepConstantSpeed();
         }
 
         /// <summary>
@@ -63,6 +61,25 @@ namespace app.Gameplay {
             }
         }
 
+        /// <summary>
+        /// Set the ball position to be close to the paddle
+        /// </summary>
+        private void StickBallToPaddle() {
+            Vector2 paddlePos = _paddle.transform.position;
+            transform.position = paddlePos + _paddleToBallVector;
+        }
+
+        /// <summary>
+        /// Make sure the ball doesn't go wild 
+        /// </summary>
+        private void KeepConstantSpeed() {
+            _ballRigidbody.velocity = _ballSpeed * (_ballRigidbody.velocity.normalized);
+        }
+
+        /// <summary>
+        /// Tweak, or randomize movement after collision
+        /// </summary>
+        /// <param name="collision">the object, this object collided with</param>
         private void OnCollisionEnter2D(Collision2D collision) {
             if (collision.gameObject.tag == "Paddle") {
                 TweakMovementAfterCollisionWithPaddle();
