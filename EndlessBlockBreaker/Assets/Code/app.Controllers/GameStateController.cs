@@ -19,10 +19,16 @@ namespace app.Controllers {
             _isGameON = false;
         }
 
+        /// <summary>
+        /// What to do on the start of the game
+        /// </summary>
         public void StartGame() {
             SceneManager.LoadScene(1);
         }
 
+        /// <summary>
+        /// What to do at the end of the game
+        /// </summary>
         public void EndGame() {
             SceneManager.LoadScene(2);
         }
