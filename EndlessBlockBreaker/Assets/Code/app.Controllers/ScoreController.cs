@@ -24,5 +24,15 @@ namespace app.Controllers {
             Score += scoreToAdd;
             _scoreText.text = Score.ToString();
         }
+
+        /// <summary>
+        /// Save player's highscore in playerprefs
+        /// </summary>
+        public void SaveHighScoreAndLastScore() {
+            PlayerPrefs.SetInt("LastScore", Score);
+            if(Score > PlayerPrefs.GetInt("HighScore", 0)) {
+                PlayerPrefs.SetInt("HighScore", Score);
+            }
+        }
     }
 }

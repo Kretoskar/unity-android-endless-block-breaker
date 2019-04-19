@@ -8,6 +8,8 @@ namespace app.Controllers {
     /// </summary>
     public class GameStateController : MonoBehaviour{
 
+        private ScoreController _scoreController;
+
         private bool _isGameON;
 
         public bool IsGameOn {
@@ -16,6 +18,7 @@ namespace app.Controllers {
         }
 
         private void Start() {
+            _scoreController = FindObjectOfType<ScoreController>();
             _isGameON = false;
         }
 
@@ -30,6 +33,7 @@ namespace app.Controllers {
         /// What to do at the end of the game
         /// </summary>
         public void EndGame() {
+            _scoreController.SaveHighScoreAndLastScore();
             SceneManager.LoadScene(2);
         }
     }
