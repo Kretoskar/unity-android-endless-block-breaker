@@ -547,5 +547,15 @@ PrefabInstance:
       propertyPath: _XPush
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7126050104041114702, guid: 492a50c4b79de0948a5b62d68c5f4c44,
+        type: 3}
+      propertyPath: _ballSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179114426465010826, guid: 492a50c4b79de0948a5b62d68c5f4c44,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492a50c4b79de0948a5b62d68c5f4c44, type: 3}
