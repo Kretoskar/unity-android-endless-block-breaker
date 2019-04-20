@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace app.UI {
-    public class GameOverUI : MonoBehaviour {
+namespace app.UI { 
+    public class MainMenuUI : MonoBehaviour{
         [SerializeField]
         private Text _highScoreText = null;
-        [SerializeField]
-        private Text _lastScoreText = null;
 
         private void Start() {
             SetHighScoreUI();
-            SetLastScoreUI();
-        }
-
-        private void SetLastScoreUI() {
-            _lastScoreText.text = PlayerPrefs.GetInt("LastScore", 0).ToString();
         }
 
         private void SetHighScoreUI() {
