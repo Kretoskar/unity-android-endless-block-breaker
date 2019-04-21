@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6179114426465010826}
   - component: {fileID: 6179114426465010827}
   - component: {fileID: 7126050104041114702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1984411641
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5d05ed5b49c495b48baf66eccdfb5655, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &6179114426465010827
 CircleCollider2D:
@@ -131,3 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8320bce1ddf1d40965059f88ea2f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _XPush: 0
+  _YPush: 8
+  _randomFactor: 0.2
+  _randomFactorAfterHittingPaddle: 3
+  _ballSpeed: 8
