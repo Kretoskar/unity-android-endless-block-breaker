@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using app.UI;
 
 namespace app.Controllers {
     /// <summary>
@@ -12,8 +13,12 @@ namespace app.Controllers {
         private int _maxLives = 3;
         [SerializeField]
         private GameStateController _gameStateController = null;
-        
+        [SerializeField]
+        private GameSceneUI _gameSceneUI = null;
+
         public int CurrLives { get; set; }
+
+        public int MaxLives { get { return _maxLives; } }
 
         private void Start() {
             CurrLives = _maxLives;
@@ -25,6 +30,7 @@ namespace app.Controllers {
         /// <param name="livesToAdd">How much lives to add</param>
         public void AddLives(int livesToAdd) {
             CurrLives += livesToAdd;
+            _gameSceneUI.SetupCurrHealthText();
             if (CurrLives >= _maxLives)
                 CurrLives = _maxLives;
         }
@@ -35,7 +41,8 @@ namespace app.Controllers {
         /// <param name="livesToSubstract">How much lives to subtract</param>
         public void SubtractLives(int livesToSubstract) {
             CurrLives -= livesToSubstract;
-            if(CurrLives <= 0) {
+            _gameSceneUI.SetupCurrHealthText();
+            if (CurrLives <= 0) {
                 CurrLives = 0;
                 _gameStateController.EndGame();
             }

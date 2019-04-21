@@ -40,7 +40,7 @@ namespace app.Gameplay.Threats {
         }
 
         /// <summary>
-        /// Behaviour after being hit by the ball
+        /// Behaviour after being collision
         /// </summary>
         /// <param name="collision">the object, this object collided with</param>
         private void OnCollisionEnter2D(Collision2D collision) {
@@ -49,7 +49,8 @@ namespace app.Gameplay.Threats {
             }
             if (collision.gameObject.tag == "Paddle") {
                 _livesController.SubtractLives(_damage);
-            }
+                Die();
+           }
         }
     }
 }
