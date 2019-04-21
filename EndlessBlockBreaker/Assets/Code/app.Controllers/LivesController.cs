@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using app.UI;
+using app.Controllers.UI;
 
 namespace app.Controllers {
     /// <summary>
@@ -14,7 +14,7 @@ namespace app.Controllers {
         [SerializeField]
         private GameStateController _gameStateController = null;
         [SerializeField]
-        private GameSceneUI _gameSceneUI = null;
+        private GameSceneUIController _gameSceneUI = null;
 
         public int CurrLives { get; set; }
 
