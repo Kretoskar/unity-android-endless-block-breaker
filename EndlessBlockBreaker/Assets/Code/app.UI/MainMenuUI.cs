@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace app.UI { 
+    /// <summary>
+    /// Handles MainMenu scene UI
+    /// </summary>
     public class MainMenuUI : MonoBehaviour{
         [SerializeField]
         private Text _highScoreText = null;
@@ -12,6 +15,9 @@ namespace app.UI {
             SetHighScoreUI();
         }
 
+        /// <summary>
+        /// Set the highscore text to be equal to  playerpref's HighScore
+        /// </summary>
         private void SetHighScoreUI() {
             _highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         }

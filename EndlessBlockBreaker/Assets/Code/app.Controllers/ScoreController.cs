@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace app.Controllers {
+    /// <summary>
+    /// Controlls player's score
+    /// </summary>
     public class ScoreController : MonoBehaviour {
 
         [SerializeField]
