@@ -4,7 +4,6 @@ using UnityEngine;
 namespace app.Controllers {
     /// <summary>
     /// Takes care of controlling whether the game is on
-    /// IsGameOn means, wheter the ball is moving
     /// </summary>
     public class GameStateController : MonoBehaviour{
 
@@ -12,6 +11,9 @@ namespace app.Controllers {
 
         private bool _isGameON;
 
+        /// <summary>
+        /// True if the ball is moving
+        /// </summary>
         public bool IsGameOn {
             get { return _isGameON; }
             set { _isGameON = value; }

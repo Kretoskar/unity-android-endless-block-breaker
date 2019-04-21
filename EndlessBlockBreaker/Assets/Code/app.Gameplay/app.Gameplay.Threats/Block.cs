@@ -9,10 +9,15 @@ namespace app.Gameplay.Threats {
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class Block : Threat {
+        [SerializeField]
+        private int _damage = 1;
+
+        private LivesController _livesController;
 
         private Rigidbody2D _blockRigidbody;
 
         private void Start() {
+            _livesController = FindObjectOfType<LivesController>();
             _scoreController = FindObjectOfType<ScoreController>();
             _blockRigidbody = GetComponent<Rigidbody2D>();
             Move();
@@ -35,12 +40,17 @@ namespace app.Gameplay.Threats {
         }
 
         /// <summary>
-        /// Die after being hit by the ball
+        /// Behaviour after being collision
         /// </summary>
         /// <param name="collision">the object, this object collided with</param>
         private void OnCollisionEnter2D(Collision2D collision) {
-            if (collision.gameObject.tag == "Ball")
+            if (collision.gameObject.tag == "Ball") {
                 Die();
+            }
+            if (collision.gameObject.tag == "Paddle") {
+                _livesController.SubtractLives(_damage);
+                Die();
+           }
         }
     }
 }
