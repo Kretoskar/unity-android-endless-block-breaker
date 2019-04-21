@@ -818,7 +818,7 @@ PrefabInstance:
     - target: {fileID: 93602857659953949, guid: 0e9fd17bb77050b4ab74409889849fb3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6
+      value: -6.76
       objectReference: {fileID: 0}
     - target: {fileID: 93602857659953949, guid: 0e9fd17bb77050b4ab74409889849fb3,
         type: 3}
@@ -864,6 +864,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 93602857659953949, guid: 0e9fd17bb77050b4ab74409889849fb3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9fd17bb77050b4ab74409889849fb3, type: 3}
@@ -1317,26 +1322,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126050104041114702, guid: 492a50c4b79de0948a5b62d68c5f4c44,
-        type: 3}
-      propertyPath: _YPush
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126050104041114702, guid: 492a50c4b79de0948a5b62d68c5f4c44,
-        type: 3}
-      propertyPath: _XPush
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126050104041114702, guid: 492a50c4b79de0948a5b62d68c5f4c44,
-        type: 3}
-      propertyPath: _ballSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179114426465010826, guid: 492a50c4b79de0948a5b62d68c5f4c44,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492a50c4b79de0948a5b62d68c5f4c44, type: 3}

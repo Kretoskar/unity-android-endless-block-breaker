@@ -24,6 +24,9 @@ namespace app.Gameplay {
             if (collision.gameObject.tag == "Ball") {
                 _gameStateControleller.EndGame();
             }
+            if (collision.gameObject.tag == "Threat") {
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

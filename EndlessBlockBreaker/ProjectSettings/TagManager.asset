@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Paddle
+  - Threat
   layers:
   - Default
   - TransparentFX
