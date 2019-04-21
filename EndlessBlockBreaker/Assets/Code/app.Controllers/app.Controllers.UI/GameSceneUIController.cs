@@ -8,7 +8,7 @@ namespace app.Controllers.UI {
     /// <summary>
     /// Handles GameScene UI
     /// </summary>
-    public class GameSceneUI : MonoBehaviour {
+    public class GameSceneUIController : MonoBehaviour {
         [SerializeField]
         private Text _currHealthText = null;
         [SerializeField]
