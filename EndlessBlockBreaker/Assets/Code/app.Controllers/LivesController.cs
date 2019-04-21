@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using app.UI;
+using app.Controllers.UI;
 
 namespace app.Controllers {
     /// <summary>

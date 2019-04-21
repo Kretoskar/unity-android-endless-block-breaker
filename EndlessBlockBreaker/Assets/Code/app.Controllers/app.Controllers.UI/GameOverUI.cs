@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace app.UI {
+namespace app.Controllers.UI {
     /// <summary>
     /// Handles GameOver Scene UI
     /// </summary>

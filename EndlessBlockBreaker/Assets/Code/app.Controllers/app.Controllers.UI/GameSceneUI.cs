@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using app.Controllers;
 
-namespace app.UI {
+namespace app.Controllers.UI {
     /// <summary>
     /// Handles GameScene UI
     /// </summary>
