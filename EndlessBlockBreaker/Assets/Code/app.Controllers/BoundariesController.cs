@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace app.Controllers {
+    /// <summary>
+    /// Make boundaries position according ot the camera size
+    /// </summary>
     public class BoundariesController : MonoBehaviour {
         [SerializeField]
-        private GameObject _leftWall;
+        private GameObject _leftWall = null;
         [SerializeField]
-        private GameObject _rightWall;
+        private GameObject _rightWall = null;
 
         private Camera _mainCamera;
 
@@ -20,12 +23,18 @@ namespace app.Controllers {
             SetupRightWallPosition();
         }
 
+        /// <summary>
+        /// Set the right wall's position
+        /// </summary>
         private void SetupRightWallPosition() {
             float wallWidth = 1;
             float xPos =  (_mainCamera.aspect * _mainCamera.orthographicSize + (wallWidth / 2));
             _rightWall.transform.position = new Vector2(xPos, _rightWall.transform.position.y);
         }
 
+        /// <summary>
+        /// Setup the left wall's position
+        /// </summary>
         private void SetupLeftWallPosition() {
             float wallWidth = 1;
             float xPos =  (-1) * (_mainCamera.aspect * _mainCamera.orthographicSize + (wallWidth / 2));
