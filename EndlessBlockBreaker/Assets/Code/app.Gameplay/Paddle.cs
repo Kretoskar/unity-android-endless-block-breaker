@@ -24,6 +24,8 @@ namespace app.Gameplay {
         private void Start() {
             _ball = FindObjectOfType<Ball>();
             _mainCamera = Camera.main;
+            int paddleSize = 2;
+            _clampValue = _mainCamera.aspect * _mainCamera.orthographicSize - (paddleSize/2); 
         }
 
         private void Update() {
