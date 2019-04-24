@@ -11,6 +11,8 @@ namespace app.Gameplay.Threats {
     public class Block : Threat {
         [SerializeField]
         private int _damage = 1;
+        [SerializeField]
+        private GameObject _explosionParticle = null;
 
         private LivesController _livesController;
 
@@ -35,6 +37,7 @@ namespace app.Gameplay.Threats {
         /// Behaviour when threat is killed
         /// </summary>
         protected override void Die() {
+            Instantiate(_explosionParticle, transform.position, Quaternion.identity);
             AddScore();
             Destroy(gameObject);
         }
