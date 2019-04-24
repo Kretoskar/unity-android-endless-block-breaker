@@ -1,5 +1,6 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.Collections;
 
 namespace app.Controllers {
     /// <summary>
@@ -10,6 +11,7 @@ namespace app.Controllers {
         private ScoreController _scoreController;
 
         private bool _isGameON;
+        private float _secondsToWait = 0.2f;
 
         /// <summary>
         /// True if the ball is moving
@@ -35,6 +37,11 @@ namespace app.Controllers {
         /// What to do at the end of the game
         /// </summary>
         public void EndGame() {
+            StartCoroutine("EndGameCoroutine");
+        }
+
+        private IEnumerator EndGameCoroutine() {
+            yield return new WaitForSeconds(_secondsToWait);
             _scoreController.SaveHighScoreAndLastScore();
             SceneManager.LoadScene(2);
         }
