@@ -8,6 +8,9 @@ namespace app.Controllers {
     /// Make boundaries position according to the camera size
     /// </summary>
     public class BoundariesController : MonoBehaviour {
+        [Header("Variables")]
+        private float _wallWidth = 1;
+
         [Header("GameObjects")]
         [SerializeField]
         private GameObject _leftWall = null;
@@ -27,8 +30,7 @@ namespace app.Controllers {
         /// Set the right wall's position
         /// </summary>
         private void SetupRightWallPosition() {
-            float wallWidth = 1;
-            float xPos =  (_mainCamera.aspect * _mainCamera.orthographicSize + (wallWidth / 2));
+            float xPos =  (_mainCamera.aspect * _mainCamera.orthographicSize + (_wallWidth / 2));
             _rightWall.transform.position = new Vector2(xPos, _rightWall.transform.position.y);
         }
 
@@ -36,8 +38,7 @@ namespace app.Controllers {
         /// Setup the left wall's position
         /// </summary>
         private void SetupLeftWallPosition() {
-            float wallWidth = 1;
-            float xPos =  (-1) * (_mainCamera.aspect * _mainCamera.orthographicSize + (wallWidth / 2));
+            float xPos =  (-1) * (_mainCamera.aspect * _mainCamera.orthographicSize + (_wallWidth / 2));
             _leftWall.transform.position = new Vector2(xPos, _leftWall.transform.position.y);
         }
     }

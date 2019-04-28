@@ -23,7 +23,7 @@ namespace app.Controllers {
 
         public int MaxLives { get { return _maxLives; } }
 
-        private void Start() {
+        private void Awake() {
             CurrLives = _maxLives;
         }
 

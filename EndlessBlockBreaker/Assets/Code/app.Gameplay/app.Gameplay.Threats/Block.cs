@@ -23,10 +23,13 @@ namespace app.Gameplay.Threats {
 
         private Rigidbody2D _blockRigidbody;
 
+        private void Awake() {
+            _blockRigidbody = GetComponent<Rigidbody2D>();
+        }
+
         private void Start() {
             _livesController = FindObjectOfType<LivesController>();
             _scoreController = FindObjectOfType<ScoreController>();
-            _blockRigidbody = GetComponent<Rigidbody2D>();
             Move();
         }
 

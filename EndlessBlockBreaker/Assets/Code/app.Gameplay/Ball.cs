@@ -34,11 +34,13 @@ namespace app.Gameplay {
 
         private Vector2 _paddleToBallVector;
 
+        private void Awake() {
+            _ballRigidbody = GetComponent<Rigidbody2D>();
+        }
+
         private void Start() {
             _paddle = FindObjectOfType<Paddle>();
             _gameStateController = FindObjectOfType<GameStateController>();
-
-            _ballRigidbody = GetComponent<Rigidbody2D>();
 
             _paddleToBallVector = transform.position - _paddle.transform.position;
         }
