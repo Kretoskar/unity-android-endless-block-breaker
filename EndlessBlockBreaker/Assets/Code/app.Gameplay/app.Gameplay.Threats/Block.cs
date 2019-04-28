@@ -9,10 +9,13 @@ namespace app.Gameplay.Threats {
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class Block : Threat {
+        [Header("GameObjects")]
         [SerializeField]
         private GameObject _explosionParticle = null;
         [SerializeField]
         private AudioClip _deathSound = null;
+
+        [Header("Variables")]
         [SerializeField]
         private int _damage = 1;
 
@@ -20,10 +23,13 @@ namespace app.Gameplay.Threats {
 
         private Rigidbody2D _blockRigidbody;
 
+        private void Awake() {
+            _blockRigidbody = GetComponent<Rigidbody2D>();
+        }
+
         private void Start() {
             _livesController = FindObjectOfType<LivesController>();
             _scoreController = FindObjectOfType<ScoreController>();
-            _blockRigidbody = GetComponent<Rigidbody2D>();
             Move();
         }
 

@@ -7,9 +7,11 @@ namespace app.Gameplay.Threats {
         private float _xMin = -3;
         private float _xMax = 3;
 
+        [Header("GameObjects")]
         [SerializeField]
         private List<Threat> _threats = null;
 
+        [Header("Variables")]
         [SerializeField]
         private float _minTimeBetweenSpawns = 0.5f;
         [SerializeField]

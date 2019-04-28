@@ -8,6 +8,7 @@ namespace app.Controllers.UI {
     /// Handles MainMenu scene UI
     /// </summary>
     public class MainMenuUIController : MonoBehaviour{
+        [Header("GameObjects")]
         [SerializeField]
         private Text _highScoreText = null;
 

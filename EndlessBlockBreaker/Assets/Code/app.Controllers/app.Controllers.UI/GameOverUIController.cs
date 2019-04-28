@@ -9,6 +9,7 @@ namespace app.Controllers.UI {
     /// Handles GameOver Scene UI
     /// </summary>
     public class GameOverUIController : MonoBehaviour {
+        [Header("GameObjects")]
         [SerializeField]
         private Text _highScoreText = null;
         [SerializeField]

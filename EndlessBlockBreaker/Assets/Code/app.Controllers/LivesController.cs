@@ -9,8 +9,11 @@ namespace app.Controllers {
     /// Has methods for both adding and substracting player's live
     /// </summary>
     public class LivesController : MonoBehaviour {
+        [Header("Variables")]
         [SerializeField]
         private int _maxLives = 3;
+
+        [Header("GameObjects")]
         [SerializeField]
         private GameStateController _gameStateController = null;
         [SerializeField]
@@ -20,7 +23,7 @@ namespace app.Controllers {
 
         public int MaxLives { get { return _maxLives; } }
 
-        private void Start() {
+        private void Awake() {
             CurrLives = _maxLives;
         }
 

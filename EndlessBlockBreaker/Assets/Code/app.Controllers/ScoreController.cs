@@ -9,6 +9,7 @@ namespace app.Controllers {
     /// </summary>
     public class ScoreController : MonoBehaviour {
 
+        [Header("GameObjects")]
         [SerializeField]
         private Text _scoreText = null;
 
