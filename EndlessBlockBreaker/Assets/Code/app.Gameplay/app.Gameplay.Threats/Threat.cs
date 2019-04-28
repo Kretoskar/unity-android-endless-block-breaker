@@ -8,6 +8,7 @@ namespace app.Gameplay.Threats {
     /// Base class for all the threats
     /// </summary>
     public abstract class Threat : MonoBehaviour {
+        [Header("Variables")]
         [SerializeField]
         protected int _score;
         [SerializeField]

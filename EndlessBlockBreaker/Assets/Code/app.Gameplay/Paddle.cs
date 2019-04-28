@@ -10,6 +10,7 @@ namespace app.Gameplay {
     /// </summary>
     public class Paddle : MonoBehaviour {
 
+        [Header("Variables")]
         [SerializeField]
         private float _playerSpeed = 1.5f;
         [SerializeField]

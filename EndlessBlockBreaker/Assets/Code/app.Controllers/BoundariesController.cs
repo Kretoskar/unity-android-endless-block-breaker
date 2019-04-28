@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace app.Controllers {
     /// <summary>
-    /// Make boundaries position according ot the camera size
+    /// Make boundaries position according to the camera size
     /// </summary>
     public class BoundariesController : MonoBehaviour {
+        [Header("GameObjects")]
         [SerializeField]
         private GameObject _leftWall = null;
         [SerializeField]
@@ -16,7 +17,6 @@ namespace app.Controllers {
         private Camera _mainCamera;
 
         private void Start() {
-
             _mainCamera = Camera.main;
 
             SetupLeftWallPosition();

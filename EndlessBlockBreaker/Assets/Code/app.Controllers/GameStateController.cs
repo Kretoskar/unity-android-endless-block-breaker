@@ -21,9 +21,12 @@ namespace app.Controllers {
             set { _isGameON = value; }
         }
 
+        private void Awake() {
+            _isGameON = false;
+        }
+
         private void Start() {
             _scoreController = FindObjectOfType<ScoreController>();
-            _isGameON = false;
         }
 
         /// <summary>
@@ -40,6 +43,10 @@ namespace app.Controllers {
             StartCoroutine("EndGameCoroutine");
         }
 
+        /// <summary>
+        /// Wait and end game
+        /// </summary>
+        /// <returns>Seconds to wait</returns>
         private IEnumerator EndGameCoroutine() {
             yield return new WaitForSeconds(_secondsToWait);
             _scoreController.SaveHighScoreAndLastScore();

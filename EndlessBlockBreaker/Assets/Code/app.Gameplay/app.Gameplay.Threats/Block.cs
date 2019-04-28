@@ -9,10 +9,13 @@ namespace app.Gameplay.Threats {
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class Block : Threat {
+        [Header("GameObjects")]
         [SerializeField]
         private GameObject _explosionParticle = null;
         [SerializeField]
         private AudioClip _deathSound = null;
+
+        [Header("Variables")]
         [SerializeField]
         private int _damage = 1;
 
