@@ -122,9 +122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _score: 100
   _speed: 2
-  _damage: 1
   _explosionParticle: {fileID: 7183064731206837944, guid: ba0d4d87274dc9b4c9eb14666a6bd668,
     type: 3}
+  _deathSound: {fileID: 8300000, guid: a372e41352daaa94ebbfccb70de66154, type: 3}
+  _damage: 1
 --- !u!50 &8041119780001250473
 Rigidbody2D:
   serializedVersion: 4

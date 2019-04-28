@@ -10,9 +10,11 @@ namespace app.Gameplay.Threats {
     [RequireComponent(typeof(Rigidbody2D))]
     public class Block : Threat {
         [SerializeField]
-        private int _damage = 1;
-        [SerializeField]
         private GameObject _explosionParticle = null;
+        [SerializeField]
+        private AudioClip _deathSound = null;
+        [SerializeField]
+        private int _damage = 1;
 
         private LivesController _livesController;
 
@@ -37,6 +39,7 @@ namespace app.Gameplay.Threats {
         /// Behaviour when threat is killed
         /// </summary>
         protected override void Die() {
+            AudioSource.PlayClipAtPoint(_deathSound, Camera.main.transform.position);
             Instantiate(_explosionParticle, transform.position, Quaternion.identity);
             AddScore();
             Destroy(gameObject);

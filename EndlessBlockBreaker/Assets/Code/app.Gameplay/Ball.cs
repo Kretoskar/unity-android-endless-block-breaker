@@ -81,12 +81,12 @@ namespace app.Gameplay {
         /// </summary>
         /// <param name="collision">the object, this object collided with</param>
         private void OnCollisionEnter2D(Collision2D collision) {
+            GetComponent<AudioSource>().Play();
             if (collision.gameObject.tag == "Paddle") {
                 TweakMovementAfterCollisionWithPaddle();
             } else {
                 RandomizeMovementAfterCollision();
             }
-
         }
 
         /// <summary>
