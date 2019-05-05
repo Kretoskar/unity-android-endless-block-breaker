@@ -13,7 +13,7 @@ namespace app.Gameplay.Player {
         [SerializeField]
         private GameObject _hand;
 
-        private float _armRotationModifier = 45 / 3;
+        private float _armRotationModifier = 45;
 
         private void Update() {
             RotateArm();
@@ -22,6 +22,12 @@ namespace app.Gameplay.Player {
         private void RotateArm() {
             float lookAtBallPos = transform.position.x - _ball.transform.position.x;
             float zRot = lookAtBallPos * _armRotationModifier;
+
+            if (zRot > 45)
+                zRot = 45;
+            else if (zRot < -45)
+                zRot = -45;
+
             Quaternion armRotation = Quaternion.Euler(0, 0, zRot);
             Quaternion handRotation = Quaternion.Euler(0, 0, 0);
             _arm.transform.rotation = armRotation;
