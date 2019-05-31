@@ -50,7 +50,16 @@ TagManager:
   - name: Threats
     uniqueID: 416166959
     locked: 0
-  - name: Foreground
+  - name: Player's Hand
+    uniqueID: 1556228707
+    locked: 0
+  - name: Player's Fingers
+    uniqueID: 3348701861
+    locked: 0
+  - name: Paddle
+    uniqueID: 3913815653
+    locked: 0
+  - name: Player
     uniqueID: 1403720633
     locked: 0
   - name: Ball

@@ -7,11 +7,11 @@ namespace app.Gameplay.Player {
     public class PlayerHand : MonoBehaviour {
 
         [SerializeField]
-        private GameObject _ball;
+        private GameObject _ball = null;
         [SerializeField]
-        private GameObject _arm;
+        private GameObject _arm = null;
         [SerializeField]
-        private GameObject _hand;
+        private GameObject _hand = null;
 
         private float _armRotationModifier = 45;
 
