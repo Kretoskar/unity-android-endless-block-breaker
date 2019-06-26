@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using CloudOnce;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,14 @@ namespace app.Controllers.UI {
 
         private void Start() {
             SetHighScoreUI();
+
+            Cloud.OnInitializeComplete += CloudOnceInitializedComplete;
+            Cloud.Initialize(false, true);
+        }
+
+        public void CloudOnceInitializedComplete() {
+            Cloud.OnInitializeComplete -= CloudOnceInitializedComplete;
+            print("Initialized");
         }
 
         /// <summary>

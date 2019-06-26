@@ -20,15 +20,15 @@ namespace app.Controllers.UI {
             SetHighScoreUI();
             SetLastScoreUI();
 
-            Cloud.OnInitializeComplete += CloudOnceInitializedComplete;
-            Cloud.Initialize(false, true);
+            //Cloud.OnInitializeComplete += CloudOnceInitializedComplete;
+            //Cloud.Initialize(false, true);
             SaveLeaderboardScore();
         }
 
-        public void CloudOnceInitializedComplete() {
-            Cloud.OnInitializeComplete -= CloudOnceInitializedComplete;
-            print("Initialized");
-        }
+        //public void CloudOnceInitializedComplete() {
+          //  Cloud.OnInitializeComplete -= CloudOnceInitializedComplete;
+          //  print("Initialized");
+        //}
 
         public void SaveLeaderboardScore() {
             Leaderboards.PongstacheHighScore.SubmitScore(PlayerPrefs.GetInt("HighScore", 0));
