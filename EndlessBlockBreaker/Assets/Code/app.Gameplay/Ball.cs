@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using app.Controllers;
+using System;
 
 namespace app.Gameplay {
     /// <summary>
@@ -20,9 +21,15 @@ namespace app.Gameplay {
 
         [Header("Randomizing movement")]
         [SerializeField]
-        private float _randomFactor = .2f;
+        private float _randomFactorY = .2f;
+        [SerializeField]
+        private float _randomFactorX = .2f;
         [SerializeField]
         private float _randomFactorAfterHittingPaddle = 3f;
+        [SerializeField]
+        private float _tweakMaxTime = 4f;
+        [SerializeField]
+        private float _tweakForce = 2f;
 
         [Header("Other settings")]
         [SerializeField]
@@ -32,13 +39,16 @@ namespace app.Gameplay {
         private GameStateController _gameStateController;
         private Rigidbody2D _ballRigidbody = null;
 
+        private bool _wasJustBoosted = false;
         private Vector2 _paddleToBallVector;
+        private float _timer;
 
         private void Awake() {
             _ballRigidbody = GetComponent<Rigidbody2D>();
         }
 
         private void Start() {
+            _wasJustBoosted = false;
             _paddle = FindObjectOfType<Paddle>();
             _gameStateController = FindObjectOfType<GameStateController>();
 
@@ -46,10 +56,25 @@ namespace app.Gameplay {
         }
 
         private void Update() {
+            _timer -= Time.deltaTime;
             if (!_gameStateController.IsGameOn)
                 StickBallToPaddle();
             else
                 KeepConstantSpeed();
+            if (_timer <= 0)
+                TweakBoost();
+        }
+
+        /// <summary>
+        /// After long boring loop when the ball hits opposing walls, 
+        /// GIVE IT A BOOOOOOOOST
+        /// </summary>
+        private void TweakBoost() {
+            Vector2 velocityTweak = new Vector2(0, _tweakForce);
+            if (_gameStateController.IsGameOn) {
+                _ballRigidbody.velocity += velocityTweak;
+                _wasJustBoosted = true;
+            }
         }
 
         /// <summary>
@@ -60,6 +85,7 @@ namespace app.Gameplay {
             if (!_gameStateController.IsGameOn) {
                 _ballRigidbody.velocity = new Vector2(_XPush, _YPush);
                 _gameStateController.IsGameOn = true;
+                _timer = _tweakMaxTime;
             }
         }
 
@@ -84,8 +110,12 @@ namespace app.Gameplay {
         /// <param name="collision">the object, this object collided with</param>
         private void OnCollisionEnter2D(Collision2D collision) {
             GetComponent<AudioSource>().Play();
+            if(_wasJustBoosted) {
+                _timer = _tweakMaxTime;
+            }
             if (collision.gameObject.tag == "Paddle") {
                 TweakMovementAfterCollisionWithPaddle();
+                _timer = _tweakMaxTime;
             } else {
                 RandomizeMovementAfterCollision();
             }
@@ -110,8 +140,8 @@ namespace app.Gameplay {
         /// </summary>
         private void RandomizeMovementAfterCollision() {
             Vector2 velocityTweak = new Vector2
-                (Random.Range(-_randomFactor, _randomFactor),
-                (Random.Range(-_randomFactor, _randomFactor)));
+                (UnityEngine.Random.Range(-_randomFactorX, _randomFactorX),
+                (UnityEngine.Random.Range(-_randomFactorY, _randomFactorY)));
             if (_gameStateController.IsGameOn) {
                 _ballRigidbody.velocity += velocityTweak;
             }
