@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudOnce;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,19 @@ namespace app.Controllers.UI {
         private void Start() {
             SetHighScoreUI();
             SetLastScoreUI();
+
+            //Cloud.OnInitializeComplete += CloudOnceInitializedComplete;
+            //Cloud.Initialize(false, true);
+            SaveLeaderboardScore();
+        }
+
+        //public void CloudOnceInitializedComplete() {
+          //  Cloud.OnInitializeComplete -= CloudOnceInitializedComplete;
+          //  print("Initialized");
+        //}
+
+        public void SaveLeaderboardScore() {
+            Leaderboards.PongstacheHighScore.SubmitScore(PlayerPrefs.GetInt("HighScore", 0));
         }
 
         /// <summary>
