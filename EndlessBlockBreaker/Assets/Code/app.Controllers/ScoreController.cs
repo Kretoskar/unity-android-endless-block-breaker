@@ -12,12 +12,13 @@ namespace app.Controllers {
         [Header("GameObjects")]
         [SerializeField]
         private Text _scoreText = null;
+        private GameStateController _gameStateController = null;
 
         public int Score { get; set; }
 
         private void Start() {
-            Score = 0;
-            UpdateScore(Score);
+            _gameStateController = FindObjectOfType<GameStateController>();
+            SetupScoreUI();
         }
 
         /// <summary>
@@ -25,8 +26,10 @@ namespace app.Controllers {
         /// </summary>
         /// <param name="scoreToAdd">Score to add to player's score</param>
         public void UpdateScore(int scoreToAdd) {
-            Score += scoreToAdd;
-            _scoreText.text = Score.ToString();
+            if (_gameStateController.IsGameOn) {
+                Score += scoreToAdd;
+                _scoreText.text = Score.ToString();
+            }
         }
 
         /// <summary>
@@ -37,6 +40,14 @@ namespace app.Controllers {
             if(Score > PlayerPrefs.GetInt("HighScore", 0)) {
                 PlayerPrefs.SetInt("HighScore", Score);
             }
+        }
+
+        /// <summary>
+        /// Setup score UI to be equal to 0
+        /// </summary>
+        private void SetupScoreUI() {
+            Score = 0;
+            _scoreText.text = Score.ToString();
         }
     }
 }
