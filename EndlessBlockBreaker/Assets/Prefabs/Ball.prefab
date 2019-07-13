@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1984411641
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d05ed5b49c495b48baf66eccdfb5655, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a7b4321ad0b143e4b8d9949d015a7f02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,9 +117,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005, y: 0.012}
+  m_Offset: {x: -0.0016258955, y: 0.002240643}
   serializedVersion: 2
-  m_Radius: 0.21
+  m_Radius: 0.17170738
 --- !u!114 &7126050104041114702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,8 +134,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _XPush: 0
   _YPush: 8
-  _randomFactor: 0.2
+  _randomFactorY: 0.2
+  _randomFactorX: 0.2
   _randomFactorAfterHittingPaddle: 3
+  _tweakMaxTime: 4
+  _tweakForce: 2
   _ballSpeed: 8
 --- !u!82 &1871057688850161909
 AudioSource:
