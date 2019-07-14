@@ -21,18 +21,27 @@ namespace app.Gameplay {
 
         [Header("Randomizing movement")]
         [SerializeField]
+        [Tooltip("How random should ball go (on y axis) after collision." +
+                "Used to avoid boring loops")]
         private float _randomFactorY = .2f;
         [SerializeField]
+        [Tooltip("How random should ball go (on x axis) after collision." +
+                "Used to avoid boring loops")]
         private float _randomFactorX = .2f;
         [SerializeField]
+        [Tooltip("How random should ball go after collision with the paddle")]
         private float _randomFactorAfterHittingPaddle = 3f;
         [SerializeField]
+        [Tooltip("Time after which the ball should be added some force. " +
+                 "Used to avoid boring loops")]
         private float _tweakMaxTime = 4f;
         [SerializeField]
+        [Tooltip("How strong should the ball be tweaked when a boring loop starts")]
         private float _tweakForce = 2f;
 
         [Header("Other settings")]
         [SerializeField]
+        [Tooltip("How fast should the ball move")]
         private float _ballSpeed = 3f;
 
         private Paddle _paddle;
@@ -112,6 +121,7 @@ namespace app.Gameplay {
             GetComponent<AudioSource>().Play();
             if(_wasJustBoosted) {
                 _timer = _tweakMaxTime;
+                _wasJustBoosted = false;
             }
             if (collision.gameObject.tag == "Paddle") {
                 TweakMovementAfterCollisionWithPaddle();
