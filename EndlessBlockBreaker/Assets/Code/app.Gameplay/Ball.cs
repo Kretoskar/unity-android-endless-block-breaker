@@ -82,7 +82,8 @@ namespace app.Gameplay {
         /// GIVE IT A BOOOOOOOOST
         /// </summary>
         private void TweakBoost() {
-            print("t");
+            if (transform.position.y < -2)
+                return;
             Vector2 velocityTweak = new Vector2(0, -_tweakForce);
             if (_gameStateController.IsGameOn) {
                 _storm.StartStorm(transform);
@@ -124,7 +125,7 @@ namespace app.Gameplay {
         /// <param name="collision">the object, this object collided with</param>
         private void OnCollisionEnter2D(Collision2D collision) {
             GetComponent<AudioSource>().Play();
-            if(_wasJustBoosted) {
+            if (_wasJustBoosted) {
                 _timer = _tweakMaxTime;
                 _wasJustBoosted = false;
             }

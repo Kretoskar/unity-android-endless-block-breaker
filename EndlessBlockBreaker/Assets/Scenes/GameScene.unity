@@ -753,7 +753,7 @@ PrefabInstance:
     - target: {fileID: 7126050104041114702, guid: 492a50c4b79de0948a5b62d68c5f4c44,
         type: 3}
       propertyPath: _tweakMaxTime
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492a50c4b79de0948a5b62d68c5f4c44, type: 3}
@@ -823,6 +823,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266410200846099638, guid: fa5f78c12aba8e345a3f5303d288ef10,
+        type: 3}
+      propertyPath: _minTimeBetweenSpawns
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266410200846099638, guid: fa5f78c12aba8e345a3f5303d288ef10,
+        type: 3}
+      propertyPath: _maxTimeBetweenSpawns
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5f78c12aba8e345a3f5303d288ef10, type: 3}
