@@ -21,20 +21,31 @@ namespace app.Gameplay {
 
         [Header("Randomizing movement")]
         [SerializeField]
+        [Tooltip("How random should ball go (on y axis) after collision." +
+                "Used to avoid boring loops")]
         private float _randomFactorY = .2f;
         [SerializeField]
+        [Tooltip("How random should ball go (on x axis) after collision." +
+                "Used to avoid boring loops")]
         private float _randomFactorX = .2f;
         [SerializeField]
+        [Tooltip("How random should ball go after collision with the paddle")]
         private float _randomFactorAfterHittingPaddle = 3f;
         [SerializeField]
+        [Tooltip("Time after which the ball should be added some force. " +
+                 "Used to avoid boring loops")]
         private float _tweakMaxTime = 4f;
         [SerializeField]
+        [Tooltip("How strong should the ball be tweaked when a boring loop starts")]
         private float _tweakForce = 2f;
 
         [Header("Other settings")]
         [SerializeField]
+        [Tooltip("How fast should the ball move")]
         private float _ballSpeed = 3f;
 
+
+        private Storm _storm;
         private Paddle _paddle;
         private GameStateController _gameStateController;
         private Rigidbody2D _ballRigidbody = null;
@@ -49,6 +60,7 @@ namespace app.Gameplay {
 
         private void Start() {
             _wasJustBoosted = false;
+            _storm = FindObjectOfType<Storm>();
             _paddle = FindObjectOfType<Paddle>();
             _gameStateController = FindObjectOfType<GameStateController>();
 
@@ -70,8 +82,11 @@ namespace app.Gameplay {
         /// GIVE IT A BOOOOOOOOST
         /// </summary>
         private void TweakBoost() {
-            Vector2 velocityTweak = new Vector2(0, _tweakForce);
+            if (transform.position.y < -2)
+                return;
+            Vector2 velocityTweak = new Vector2(0, -_tweakForce);
             if (_gameStateController.IsGameOn) {
+                _storm.StartStorm(transform);
                 _ballRigidbody.velocity += velocityTweak;
                 _wasJustBoosted = true;
             }
@@ -110,8 +125,9 @@ namespace app.Gameplay {
         /// <param name="collision">the object, this object collided with</param>
         private void OnCollisionEnter2D(Collision2D collision) {
             GetComponent<AudioSource>().Play();
-            if(_wasJustBoosted) {
+            if (_wasJustBoosted) {
                 _timer = _tweakMaxTime;
+                _wasJustBoosted = false;
             }
             if (collision.gameObject.tag == "Paddle") {
                 TweakMovementAfterCollisionWithPaddle();

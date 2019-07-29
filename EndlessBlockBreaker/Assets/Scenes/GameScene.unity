@@ -677,6 +677,10 @@ PrefabInstance:
       propertyPath: _rightWall
       value: 
       objectReference: {fileID: 2086791215}
+    - target: {fileID: 2114255738, guid: aba2d93b74f14af408d0c0162c9d3577, type: 3}
+      propertyPath: _stormTimeInSeconds
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba2d93b74f14af408d0c0162c9d3577, type: 3}
 --- !u!1001 &6179114427513861094
@@ -746,6 +750,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7126050104041114702, guid: 492a50c4b79de0948a5b62d68c5f4c44,
+        type: 3}
+      propertyPath: _tweakMaxTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492a50c4b79de0948a5b62d68c5f4c44, type: 3}
 --- !u!1001 &6266410199427389099
@@ -814,6 +823,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266410200846099638, guid: fa5f78c12aba8e345a3f5303d288ef10,
+        type: 3}
+      propertyPath: _minTimeBetweenSpawns
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266410200846099638, guid: fa5f78c12aba8e345a3f5303d288ef10,
+        type: 3}
+      propertyPath: _maxTimeBetweenSpawns
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5f78c12aba8e345a3f5303d288ef10, type: 3}
