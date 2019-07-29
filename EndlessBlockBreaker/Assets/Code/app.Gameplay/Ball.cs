@@ -44,6 +44,8 @@ namespace app.Gameplay {
         [Tooltip("How fast should the ball move")]
         private float _ballSpeed = 3f;
 
+
+        private Storm _storm;
         private Paddle _paddle;
         private GameStateController _gameStateController;
         private Rigidbody2D _ballRigidbody = null;
@@ -58,6 +60,7 @@ namespace app.Gameplay {
 
         private void Start() {
             _wasJustBoosted = false;
+            _storm = FindObjectOfType<Storm>();
             _paddle = FindObjectOfType<Paddle>();
             _gameStateController = FindObjectOfType<GameStateController>();
 
@@ -79,8 +82,11 @@ namespace app.Gameplay {
         /// GIVE IT A BOOOOOOOOST
         /// </summary>
         private void TweakBoost() {
-            Vector2 velocityTweak = new Vector2(0, _tweakForce);
+            if (transform.position.y < -2)
+                return;
+            Vector2 velocityTweak = new Vector2(0, -_tweakForce);
             if (_gameStateController.IsGameOn) {
+                _storm.StartStorm(transform);
                 _ballRigidbody.velocity += velocityTweak;
                 _wasJustBoosted = true;
             }
@@ -119,7 +125,7 @@ namespace app.Gameplay {
         /// <param name="collision">the object, this object collided with</param>
         private void OnCollisionEnter2D(Collision2D collision) {
             GetComponent<AudioSource>().Play();
-            if(_wasJustBoosted) {
+            if (_wasJustBoosted) {
                 _timer = _tweakMaxTime;
                 _wasJustBoosted = false;
             }

@@ -62,6 +62,12 @@ TagManager:
   - name: Player
     uniqueID: 1403720633
     locked: 0
+  - name: Lightninhg
+    uniqueID: 2023628921
+    locked: 0
   - name: Ball
     uniqueID: 2310555655
+    locked: 0
+  - name: Cloud
+    uniqueID: 3953987081
     locked: 0
